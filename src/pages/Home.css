@@ -1,0 +1,233 @@
+.App {
+    height: 100vh;
+    background-color: rgb(255, 255, 255);
+  }
+  .App_body{
+    width: 100%;
+    height: 100%;
+    /* background-color: #eed4d4; */
+    display: flex;
+    flex-direction: column;
+  }
+  /* .sticky-space{
+    height: 40px;
+    width: 100%;
+  } */
+
+  /* Header */
+  .header{
+    /* position: fixed; */
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #F3F3F3;
+  }
+  .header-brand{
+    height: 100%;
+    padding-left: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .header-brand img{
+    width: 28px;
+    height: 28px;
+  }
+  .header p{
+    font-weight: bold;
+    font-size: 15px;
+    padding-right: 20px;
+    margin: 0;
+  }
+
+
+  /* body */
+  .chatSection{
+    display: flex;
+    /* height: 100%; */
+    /* background-color: rgb(153, 250, 8); */
+  }
+
+  /* ////////////////////////// */
+  /* side bar */
+  .sidebar{
+    height: 100%;
+    width: 350px;
+    /* background-color: #7c6f6f; */
+    transition: all .8s ease-in-out;
+    padding: 10px 10px;
+  }
+  .sidebar h3{
+    margin-block-start: 0;
+    margin-block-end: 0;
+  }
+  .search{
+    width: 100%;
+    height: 50px;
+    /* background-color: crimson; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+
+
+  .sidebar ul{
+    border-radius: 15px;
+    /* margin: 0;
+    padding: 0; */
+    overflow-y: scroll;
+    /* background-color: rgb(226, 121, 121); */
+    height: 90vh;
+  }
+  .sidebar ul::-webkit-scrollbar{
+    width: 0px;
+  }
+
+  
+  .sidebar li{
+    width: 100%;
+    height: 65px;
+    margin: 0;
+    list-style-type: none;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    /* background-color: rgb(218, 221, 221); */
+    /* border-radius: 15px; */
+    border-bottom: 1px solid rgb(223, 220, 220);
+    gap: 2px;
+    margin-bottom: 3px;
+  }
+  
+  .title{
+   color: rgb(0, 0, 0);
+   transition: all 0.5s ease-in-out;
+  }
+
+  /* ///////////////////////////////// */
+  /* chat box */
+  .chat_body{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    padding: 10px 10px;
+    /* background-color: rgb(31, 31, 215); */
+  }
+  .chat_head{
+    width: 100%;
+    height: 70px;
+    background-color: rgb(208, 208, 207);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+  }
+  .chat_box{
+    position: relative;
+    border-radius: 20px;
+    height: 100%;
+    background-color: rgba(139, 181, 96, 0.479);
+  }
+  .chats{
+    height: 500px;
+    /* background-color: bisque; */
+    overflow-y: hidden;
+  }
+  .scroll-chats{
+    /* background-color: rgb(15, 15, 16); */
+    padding: 10px 0px;
+  }
+  .scroll-chats::-webkit-scrollbar{
+    display: none;
+  }
+  
+  .chat_box .type{
+    position: absolute;
+    width: 100%;
+    /* bottom: 5px; */
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 60px;
+    /* background-color: rgb(21, 21, 21); */
+    display: flex;
+    justify-content: center;
+  }
+  .type-body{
+    width: 90%;
+    height: 100%;
+    /* background-color: rgb(82, 195, 195); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+  .type-body input{
+    width: 100%;
+    height: 45px;
+    padding: 0 15px;
+    border: none;
+    border-radius: 15px;
+    font-size: 18px;
+    background-color: beige;
+  }
+  .type input:focus{
+    outline:none
+  }
+  .type button{
+    padding: 0 15px;
+    height: 45px;
+    border-radius: 15px;
+    border: none;
+    background-color: rgb(255, 255, 255);
+    font-weight: bold;
+  }
+
+  .chat_sender{
+    width: 100%;
+    height: 100%;
+    padding: 0px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .chat_sender_title{
+    display: flex;
+    height: 100%;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* messsage */
+  .msg{
+    display: flex;
+  }
+  .msg-container{
+    display: flex;
+    flex-direction: column;
+  }
+  #you{
+    justify-content: flex-end;
+    margin-right: 10px;
+  }
+  #you p{
+    background-color: #BEE3F8;
+    padding: 5px 20px;
+    border-radius: 8px;
+  }
+
+  #friend{
+    justify-content: flex-start;
+    margin-left: 10px
+  }
+
+  #friend p{
+    background-color: #B9F5D0;
+    padding: 5px 10px;
+    border-radius: 8px;
+  }
+  #friend span{
+    font-size: 10px;
+    padding-left: 10px;
+  }

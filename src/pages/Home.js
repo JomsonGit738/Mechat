@@ -1,39 +1,61 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Sidebar from '../components/Sidebar';
 import Header from '../components/Header';
 import './Home.css'
 import ChatBody from '../components/ChatBody';
-import { userContext } from '../components/ContextShare'
-import { FetchChats } from '../services/apiCalls';
-import { useDispatch, useSelector } from 'react-redux'
-import { setFriends } from '../features/slice';
+import { DeleteChatfromUser, FetchChats } from '../services/apiCalls';
+import { useSelector } from 'react-redux'
+import { ToastContainer } from 'react-toastify';
+
+
+
 
 function Home() {
 
     const myuser = useSelector(state => state.activeUser)
-    const dispatch = useDispatch()
-    //console.log(myuser);
-    //const {activeUser, setActiveUser, selectedChat, setSelectedChat, chats, setChats} = useContext(userContext)
-    const { setChats } = useContext(userContext)
+    const [selectedChat, setSelectedChat] = useState('')
+    const [myfriends, setMyFriends] = useState([])
+    const [isGroupOpen, setIsGroupOpen] = useState(false)
 
-    //fetch friends of all users
-    const fetchUserChats = async () => {
-        //let sessionUser = JSON.parse(sessionStorage.getItem("userInfo"))
-        //let myuser = useSelector(state => state.activeUser)
-        //console.log(myuser);
+    function onHandleLastMessage(m, id) {
+        setMyFriends((friends) => friends.map((friend) =>
+            friend._id === id
+                ? { ...friend, latestMessage: { ...friend.latestMessage, content: m } }
+                : friend
+        ))
+    }
+    async function onHandleDeleteChat(id) {
         const headerConfig = {
             token: myuser.token
-        } 
-        const { data } = await FetchChats(headerConfig)
-        dispatch(setFriends(data))
-        setChats(data)
+        }
+        await DeleteChatfromUser(id, headerConfig)
+        setSelectedChat('')
+        setMyFriends((friends) => friends.filter(friend => friend._id !== id))
+
     }
-
-
+    //fetch friends of user
+    const fetchUserChats = async () => {
+        const headerConfig = {
+            token: myuser.token
+        }
+        const { data } = await FetchChats(headerConfig)
+        setMyFriends(data)
+    }
+    //rename GroupChat
+    function handleRenameGroupChat(name) {
+        setMyFriends(friends =>
+            friends.map((item) => item._id === selectedChat._id ? { ...item, chatName: name } : item));
+        setSelectedChat('')
+    }
+    //handleUpdate/refresch chats/myfriends
+    function handleChatRefresh() {
+        setSelectedChat('')
+        fetchUserChats()
+    }
     useEffect(() => {
         fetchUserChats()
-    }, [myuser])
-    //[refreshChats]
+        // eslint-disable-next-line
+    }, [])
 
     return (
         <div className='App'>
@@ -41,11 +63,27 @@ function Home() {
                 <Header />
                 {/* <div className='sticky-space'></div> */}
                 <div className='chatSection'>
-                    <Sidebar/>
+                    <Sidebar
+                        setIsGroupOpen={setIsGroupOpen}
+                        selectedChat={selectedChat}
+                        friends={myfriends}
+                        onSelectedChat={setSelectedChat}
+                        onFriendsAdd={setMyFriends} />
 
-                    <ChatBody/>
+                    <ChatBody
+                        handleChatRefresh={handleChatRefresh}
+                        handleRenameGroupChat={handleRenameGroupChat}
+                        setMyFriends={setMyFriends}
+                        isGroupOpen={isGroupOpen}
+                        setIsGroupOpen={setIsGroupOpen}
+                        selectedChat={selectedChat}
+                        onLastMessage={onHandleLastMessage}
+                        onHandleDeleteChat={onHandleDeleteChat} />
+
+
                 </div>
             </div>
+            <ToastContainer />
         </div>
 
     )

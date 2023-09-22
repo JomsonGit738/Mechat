@@ -4,24 +4,17 @@ import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { GoogleSignInUser, loginUser } from '../services/apiCalls'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 import jwt_decode from "jwt-decode";
-
-//to read the data
 import { useDispatch } from 'react-redux'
 import { setUser } from '../features/slice'
 
 function Login() {
 
-  //const myUser = useSelector(state => state.activeUser)
   const dispatch = useDispatch()
-  
-  //dispatch(setUser({name:'johny'}))
-
-
   const navigate = useNavigate()
 
   const schema = yup.object().shape({
@@ -38,7 +31,7 @@ function Login() {
     const loginResponse = await loginUser(data)
     //console.log(loginResponse);
     if (loginResponse.status === 200) {
-      sessionStorage.setItem('userInfo',JSON.stringify(loginResponse.data))
+      sessionStorage.setItem('userInfo', JSON.stringify(loginResponse.data))
       dispatch(setUser(loginResponse.data))
       navigate('/home')
     } else {
@@ -51,20 +44,18 @@ function Login() {
   //Google sign in
   const Success = async (data) => {
     //decoding with jwt
-    const {email,name,picture} = jwt_decode(data.credential)
-    //console.log(email,name,picture);
+    const { email, name, picture } = jwt_decode(data.credential)
     const body = {
-      username:name,
+      username: name,
       email,
-      password:"#23Gsin",
-      url:picture,
-      mobile:"#45Gauth"
+      password: "#23Gsin",
+      url: picture,
+      mobile: "#45Gauth"
     }
-    //console.log(body);
+
     const googleSignInResponse = await GoogleSignInUser(body)
-    //console.log(googleSignInResponse);
-    if(googleSignInResponse.status === 200){
-      sessionStorage.setItem('userInfo',JSON.stringify(googleSignInResponse.data))
+    if (googleSignInResponse.status === 200) {
+      sessionStorage.setItem('userInfo', JSON.stringify(googleSignInResponse.data))
       dispatch(setUser(googleSignInResponse.data))
       navigate('/home')
     } else {
@@ -80,7 +71,7 @@ function Login() {
 
 
   return (
-    <div className='loginContainer'>
+    <div className='loginContainer signinContainer'>
       {/* header css from Home.css */}
       <div className='s_tag'>
         <img src="https://i.postimg.cc/wjjTDwgj/chat.png" alt="" />
@@ -92,11 +83,11 @@ function Login() {
             <img src="https://i.postimg.cc/wjjTDwgj/chat.png" alt="" />
             <h2>MeChat</h2>
             <p>Let's chit chat on MeChat!</p>
-            <span>We recommend signing in with mobile number to easily connect with friends.</span>
+            <span>We recommend sign in with google account to easily connect with friends.</span>
           </div>
           {/* Login Form */}
           <form onSubmit={handleSubmit(onSubmit)} className='loginForm'>
-            <h2>Sign In</h2>
+            <h2 style={{ fontSize: '25px', fontWeight: 'bold' }}>Sign In</h2>
 
             <div className='formInput' style={{ marginTop: "20px" }}>
               <input type="email" id='email' placeholder=' '
@@ -111,8 +102,8 @@ function Login() {
             </div>
             <span className='error'>{errors.password?.message}</span>
             <div className='form-I-submit-button'>
-              <button type='submit'>
-                Log In
+              <button style={{ fontWeight: 'bold' }} type='submit'>
+                Sign In
               </button>
             </div>
             <div className='google-sign'>
@@ -123,11 +114,16 @@ function Login() {
                 />
               </GoogleOAuthProvider>
             </div>
+            <div style={{ paddingTop: '20px', fontSize: '13px' }}>
+              <span>Don't you have an account?
+                <Link to='/signup' style={{ textDecoration: 'underline' }}> Sign Up</Link>
+              </span>
+            </div>
           </form>
         </div>
-      </div>
+      </div >
       <ToastContainer />
-    </div>
+    </div >
   )
 }
 

@@ -1,282 +1,287 @@
 .signinContainer {
-    height: 100vh;
-    width: 100%;
+  height: 100vh;
+  width: 100%;
+  background-image: linear-gradient(
+      rgba(86, 249, 255, 0),
+      rgba(55, 254, 241, 0.325)
+    ),
+    url(https://img.freepik.com/premium-vector/web-icon-background-computer-vector-icon-background_645658-707.jpg?w=1060);
+  /* background-size: cover; */
+  background-position: top;
 }
 
 .s_tag {
-    height: 40px;
-    padding-left: 20px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 5px;
+  height: 40px;
+  padding-left: 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 5px;
 }
 
 .s_tag img {
-    width: 25px;
-    height: 25px;
+  width: 25px;
+  height: 25px;
 }
 
 .s_tag h3 {
-    font-size: 16px;
-    margin-block-start: 0;
-    margin-block-end: 0;
+  font-size: 16px;
+  font-weight: bold;
+  margin-block-start: 0;
+  margin-block-end: 0;
 }
 
 .signin {
-    width: 100%;
-    height: 650px;
-    /* background-color: rgb(160, 205, 190); */
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 100%;
+  height: 650px;
+  /* background-color: rgb(160, 205, 190); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .signin_body {
-    width: 700px;
-    height: 450px;
-    /* background-color: rgb(186, 210, 213); */
-    display: flex;
-    border-radius: 30px;
-    overflow: hidden;
-    box-shadow: 0px 0px 15px 2px rgba(0, 0, 0, 0.201);
+  width: 700px;
+  height: 450px;
+  background-color: rgba(255, 255, 255, 0.618);
+  display: flex;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0px 0px 15px 2px rgba(0, 0, 0, 0.267);
 }
 
 .singinImage {
-    width: 50%;
-    background-color: rgb(234, 239, 240);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  width: 50%;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .singinImage img {
-    width: 160px;
+  width: 160px;
 }
 
 .singinImage h2 {
-    font-weight: 900;
-    margin-block-start: 1rem;
-    margin-block-end: 0;
+  font-weight: 900;
+  margin-block-start: 1rem;
+  margin-block-end: 0;
 }
 
 .singinImage p {
-    margin-block-start: 0.5rem;
-    margin-block-end: 0;
+  margin-block-start: 0.5rem;
+  margin-block-end: 0;
 }
 
 .singinImage span {
-    margin: 10px 45px;
-    font-size: 12px;
-    height: fit-content;
-    text-align: center;
+  margin: 10px 45px;
+  font-size: 12px;
+  height: fit-content;
+  text-align: center;
 }
 
-
 form {
-    /* background-color: blueviolet; */
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  /* background-color: blueviolet; */
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 form h2 {
-    margin-block-start: 0;
-    margin-block-end: 1rem;
+  margin-block-start: 0;
+  margin-block-end: 1rem;
 }
-.imgContainer{
-    width: 80px;
-    height: 80px;
-    background-color: rgb(43, 156, 226);
-    position: relative;
-    border-radius: 50%;
-    overflow: hidden;
-    margin-bottom: 0px;
+.imgContainer {
+  width: 80px;
+  height: 80px;
+  background-color: rgb(43, 156, 226);
+  position: relative;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 0px;
 }
-.image-error{
-    text-align: center;
-    width: 220px;
-    height: 10px;
-    font-size: 10px;
-    color: red;
-    margin-bottom: 30px;
+.image-error {
+  text-align: center;
+  width: 220px;
+  height: 10px;
+  font-size: 10px;
+  color: red;
+  margin-bottom: 20px;
 }
 
-input[type="file"]{
-    display: none;
+input[type="file"] {
+  display: none;
 }
 
 .form-img {
-    width: 80px;
-    height: 80px;
+  width: 80px;
+  height: 80px;
 }
 
-.choose{
-    position: absolute;
-    background-color: rgba(0, 0, 0, 0.464);
-    bottom: 0;
-    width: 100%;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    font-size: 10px;
-    color: rgb(255, 255, 255);
-    cursor: pointer;
+.choose {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.464);
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  font-size: 10px;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
 }
 
 .formInput {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    /* background-color: bisque; */
-    
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  /* background-color: bisque; */
 }
 
 input {
-    width: 220px;
-    height: 20px;
-    padding: 2px 0;
-    border: none;
-    background-color: transparent;
-    border-bottom: 1px solid rgb(160, 160, 161);
-    font-size: 14px;
-    font-weight: 300;
-    transition: 300ms ease;
-    /* background-color: aqua; */
+  width: 220px;
+  height: 20px;
+  padding: 2px 0;
+  border: none;
+  background-color: transparent;
+  border-bottom: 1px solid rgb(160, 160, 161);
+  font-size: 14px;
+  font-weight: 300;
+  transition: 300ms ease;
+  /* background-color: aqua; */
 }
-.formInput input:focus{
-    outline: none;
-    border-color: rgb(44, 134, 53);
-    box-shadow: 0 1px 0 0 rgb(44, 134, 66);
+.formInput input:focus {
+  outline: none;
+  border-color: rgb(44, 134, 53);
+  box-shadow: 0 1px 0 0 rgb(44, 134, 66);
 }
-label{
-    position: absolute;
-    font-size: 13px;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    transition: 500ms ease;
-    color: rgb(152, 150, 150);
+label {
+  position: absolute;
+  font-size: 13px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  transition: 500ms ease;
+  color: rgb(152, 150, 150);
 }
 input:focus + label,
 input:not(:placeholder-shown) + label {
-    transform: translateY(-15px);
-    font-size: 10px;
+  transform: translateY(-15px);
+  font-size: 10px;
 }
-.error{
-    width: 220px;
-    height: 10px;
-    font-size: 10px;
-    color: red;
-    margin-bottom: 13px;
-}
-
-.form-I-submit-button button{
-    margin-top: 20px;
-    width: 220px;
-    border: none;
-    padding: 8px 0px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    border-radius: 8px;
-    background-color: #1db4f5e4;
-    color: rgb(255, 255, 255);
-    font-weight: 400;
-    transition: all 0.4s ease-in-out;
-    cursor: pointer;
+.error {
+  width: 220px;
+  height: 10px;
+  font-size: 10px;
+  color: red;
+  margin-bottom: 13px;
 }
 
-.form-I-submit-button button:hover{
-    box-shadow: 0 0 12px 5px rgba(27, 27, 55, 0.186) ;
+.form-I-submit-button button {
+  margin-top: 10px;
+  width: 220px;
+  border: none;
+  padding: 8px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 8px;
+  background-color: #1db4f5e4;
+  color: rgb(255, 255, 255);
+  font-weight: 400;
+  transition: all 0.4s ease-in-out;
+  cursor: pointer;
 }
 
+.form-I-submit-button button:hover {
+  box-shadow: 0 0 12px 5px rgba(27, 27, 55, 0.186);
+}
 
 /* Form II phone verification */
-.form-II{
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transition: all 0.5s ease-in-out;
+.form-II {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.5s ease-in-out;
 }
-.send-otp{
-    margin-top: 20px;
-    width: 100%;
-    font-weight: bold;
-    border: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 6px;
-    padding: 8px 0px;
-    border-radius: 8px;
-    background-color: #1db4f5e4;
-    color: rgb(255, 255, 255);
-    transition: all 0.4s ease-in-out;
-    cursor: pointer;
+.send-otp {
+  margin-top: 20px;
+  width: 100%;
+  font-weight: bold;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 0px;
+  border-radius: 8px;
+  background-color: #1db4f5e4;
+  color: rgb(255, 255, 255);
+  transition: all 0.4s ease-in-out;
+  cursor: pointer;
 }
-.sent-otp-spinner{
-    background-color: red;
+.sent-otp-spinner {
+  background-color: red;
 }
-.resend-otp{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.resend-otp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.resend-otp button{
-    width: 120px;
-    margin-top: 0px;
-    background-color: rgb(211, 218, 223);
-    border: none;
-    padding: 8px 5px;
-    border-radius: 8px;
-    cursor: pointer;
+.resend-otp button {
+  width: 120px;
+  margin-top: 0px;
+  background-color: rgb(211, 218, 223);
+  border: none;
+  padding: 8px 5px;
+  border-radius: 8px;
+  cursor: pointer;
 }
-.verify-btn{
-    cursor: pointer;
-    margin-top: 20px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    background-color: #1db4f5e4;
-    font-size: 15px;
-    border: none;
-    color: white;
-    padding: 8px 0px;
-    border-radius: 8px;
+.verify-btn {
+  cursor: pointer;
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  background-color: #1db4f5e4;
+  font-size: 15px;
+  border: none;
+  color: white;
+  padding: 8px 0px;
+  border-radius: 8px;
 }
-.form-III{
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transition: all 0.5s ease-in-out;
+.form-III {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.5s ease-in-out;
 }
-.form-III h2{
-    margin-block-start: 0.5rem;
-    margin-inline-end: 0;
+.form-III h2 {
+  margin-block-start: 0.5rem;
+  margin-inline-end: 0;
 }
-.Sign-in{
-    margin-top: 20px;
-    width: 220px;
-    font-weight: bold;
-    border: none;
-    padding: 8px 0px;
-    border-radius: 8px;
-    background-color: #1db4f5e4;
-    color: rgb(255, 255, 255);
-    transition: all 0.4s ease-in-out;
-    cursor: pointer;
+.Sign-in {
+  margin-top: 20px;
+  width: 220px;
+  font-weight: bold;
+  border: none;
+  padding: 8px 0px;
+  border-radius: 8px;
+  background-color: #1db4f5e4;
+  color: rgb(255, 255, 255);
+  transition: all 0.4s ease-in-out;
+  cursor: pointer;
 }
-.google-sign{
-    margin-top: 30px;
+.google-sign {
+  margin-top: 30px;
 }

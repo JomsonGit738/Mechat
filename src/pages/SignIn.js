@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import {useNavigate} from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import './Auth.css'
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup'
@@ -18,15 +18,13 @@ import { ThreeDots } from 'react-loader-spinner'
 import { MutatingDots } from 'react-loader-spinner'
 import { v4 } from 'uuid'
 import { registerUser, uniqueEmail } from '../services/apiCalls';
-// HiArrowSmallRight
 
 
 function SignIn() {
 
 
     const navigate = useNavigate()
-    // const 
-    const [userstatus,setUserStatus] = useState(false)
+    const [userstatus, setUserStatus] = useState(false)
     const [alldone, setAlldone] = useState(false)
     const [verifyotpspinner, setVerifyOtpSpinner] = useState(false)
     const [url, setUrl] = useState('')
@@ -37,7 +35,7 @@ function SignIn() {
     const [OTP, setOTP] = useState("");
     const allowedCountry = ['in']
 
-    const [formData,setFormData] = useState({})
+    const [formData, setFormData] = useState({})
     const [phone, setPhone] = useState('')
     const [verificaiton, setVerification] = useState(false)
     const [image, setImage] = useState('')
@@ -45,7 +43,6 @@ function SignIn() {
 
     const setProfilePic = (e) => {
         setImage(e.target.files[0])
-        // console.log(e.target.files[0]);
     }
 
     const schema = yup.object().shape({
@@ -73,9 +70,9 @@ function SignIn() {
 
     const onSubmit = async (data) => {
 
-        const {email} = data
-        const uniqueResponse = await uniqueEmail({email})
-        if(uniqueResponse.status === 210){
+        const { email } = data
+        const uniqueResponse = await uniqueEmail({ email })
+        if (uniqueResponse.status === 210) {
             console.log(uniqueResponse.data);
             toast.error(uniqueResponse.data)
         } else {
@@ -83,14 +80,13 @@ function SignIn() {
             setFormData(data)
             setVerification(true)
         }
-        
+
     }
 
     const sendOTPNubmer = async () => {
         console.log(phone);
 
         if (phone && phone.slice(0, 2) !== "91") {
-            // toast.error("Wrong country code, ony available in india(+91)")
             toast.error('Wrong country code, OTP allowed only in india(+91)', {
                 position: "top-right",
                 autoClose: 3000,
@@ -196,8 +192,8 @@ function SignIn() {
                         setVerifyOtpSpinner(false)
                         setVerification(false)
                         setAlldone(true)
-                        toast.success(`Your number ${phone}, verified!`,{
-                            autoClose:1500
+                        toast.success(`Your number ${phone}, verified!`, {
+                            autoClose: 1500
                         })
                     }).catch(error => {
                         console.log(error);
@@ -211,19 +207,19 @@ function SignIn() {
             })
     }
 
-    const SignInUser = async () =>{
+    const SignInUser = async () => {
         setUserStatus(true)
-        const tempObj = {...formData,url,mobile:phone}
-        const {imagefile, ...body} = tempObj
+        const tempObj = { ...formData, url, mobile: phone }
+        const { imagefile, ...body } = tempObj
         console.log(body);
         const registerResponse = await registerUser(body)
-        if(registerResponse.status === 200){
-            toast.success('sign in successful!, Log In with gmail & password',{
+        if (registerResponse.status === 200) {
+            toast.success('sign in successful!, Log In with gmail & password', {
                 autoClose: 2500
             })
-            setTimeout(()=>{
-                navigate("/")    
-            },3000)
+            setTimeout(() => {
+                navigate("/")
+            }, 3000)
         } else {
             console.log(registerResponse);
             toast.error('error on creating account!, try google login')
@@ -255,19 +251,19 @@ function SignIn() {
                         <img src="https://i.postimg.cc/wjjTDwgj/chat.png" alt="" />
                         <h2>MeChat</h2>
                         <p>Let's chit chat on MeChat!</p>
-                        <span>We recommend signing in with mobile number to easily connect with friends.</span>
+                        <span>We recommend sign in with google account to easily connect with friends.</span>
                     </div>
                     {/* sign in part I */}
                     {(!verificaiton && !alldone) &&
                         <form onSubmit={handleSubmit(onSubmit)}>
-                            <h2>Sign In</h2>
+                            <h2 style={{ fontSize: '25px', fontWeight: 'bold' }}>Sign Up</h2>
                             <div type='file' className='imgContainer'>
                                 <input type="file" id='image'
                                     {...register('imagefile')} onChangeCapture={setProfilePic} />
                                 {/* onChange={setProfilePic} */}
                                 <img className='form-img' src={preview ? preview : "https://i.postimg.cc/C1ZdC9LH/user.png"} alt="" />
                                 <label htmlFor='image' className='choose' style={preview ? { opacity: '0' } : { opacity: '1' }}>
-                                    <h1><MdOutlineAddAPhoto /></h1>
+                                    <h1 style={{ fontSize: '20px' }}><MdOutlineAddAPhoto /></h1>
                                 </label>
                             </div>
                             <span className='image-error'>{errors.imagefile?.message}</span>
@@ -290,10 +286,15 @@ function SignIn() {
                             </div>
                             <span className='error'>{errors.password?.message}</span>
                             <div className='form-I-submit-button'>
-                                <button type='submit'>
-                                    Continue 
+                                <button style={{ fontWeight: 'bold' }} type='submit'>
+                                    Continue
                                     <HiArrowSmallRight />
                                 </button>
+                            </div>
+                            <div style={{ paddingTop: '10px', fontSize: '13px' }}>
+                                <span>Already a member in MeChat?
+                                    <Link to='/' style={{ textDecoration: 'underline' }}> Sign In</Link>
+                                </span>
                             </div>
                         </form>
                     }
@@ -377,21 +378,21 @@ function SignIn() {
                     }
                     {alldone &&
                         <div className='form-III'>
-                            { userstatus &&
+                            {userstatus &&
                                 <MutatingDots
-                                height="100"
-                                width="100"
-                                color="#1db4f5e4"
-                                secondaryColor='#4fa94d'
-                                radius='12.5'
-                                ariaLabel="mutating-dots-loading"
-                                wrapperStyle={{}}
-                                wrapperClass=""
-                                visible={true}
-                            />
+                                    height="100"
+                                    width="100"
+                                    color="#1db4f5e4"
+                                    secondaryColor='#4fa94d'
+                                    radius='12.5'
+                                    ariaLabel="mutating-dots-loading"
+                                    wrapperStyle={{}}
+                                    wrapperClass=""
+                                    visible={true}
+                                />
                             }
                             <h2>All Done!</h2>
-                            <button onClick={SignInUser} className='Sign-in'>Sign In</button>
+                            <button onClick={SignInUser} className='Sign-in'>Sign UP</button>
                         </div>
                     }
                 </div>
